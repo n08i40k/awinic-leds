@@ -76,5 +76,5 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1.16.0
         with:
-          artifacts: app/build/outputs/apk/release/app-release-signed.apk
+          artifacts: "magisk-module/output/aw22xxx_leds_release.zip"
           bodyFile: CHANGELOG.md
