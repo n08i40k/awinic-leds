@@ -1,4 +1,7 @@
-allow priv_app sysfs file open;
-allow priv_app sysfs file read;
-allow priv_app sysfs file write;
-allow priv_app sysfs file getattr;
+type sysfs_led;
+
+typeattribute sysfs_led sysfs_type;
+typeattribute sysfs_led fs_type;
+typeattribute sysfs_led mlstrustedobject;
+
+allow priv_app sysfs_led file { open read write getattr };

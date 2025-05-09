@@ -4,7 +4,7 @@ APK_SOURCE_PATH=$1
 
 rm -f ./output/aw22xxx_leds_release.zip
 
-sh ./pack-debug.sh "$APK_SOURCE_PATH"
+sh ./pack-release.sh "$APK_SOURCE_PATH"
 
 adb shell "rm -f /sdcard/aw22xxx_leds_release.zip"
 adb push ./output/aw22xxx_leds_release.zip /sdcard/aw22xxx_leds_release.zip
