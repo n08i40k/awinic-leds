@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "ru.n08i40k.aw22xxx_leds";
+option java_multiple_files = true;
+
+message SavedLedSettings {
+  bool hwen = 1;
+  uint32 effect = 2;
+  uint32 frq = 3;
+  map<uint32, uint32> rgb = 4;
+}
+
+message Settings {
+  bool completed_intro = 1;
+  bool use_own_values = 2;
+
+  bool use_saved_settings = 3;
+  SavedLedSettings led = 4;
+}

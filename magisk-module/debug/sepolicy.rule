@@ -1,0 +1,4 @@
+allow priv_app sysfs file open;
+allow priv_app sysfs file read;
+allow priv_app sysfs file write;
+allow priv_app sysfs file getattr;
