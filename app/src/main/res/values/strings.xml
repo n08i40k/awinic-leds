@@ -18,4 +18,6 @@
     <string name="cat_application">Application</string>
     <string name="led_use_saved_settings_title">Use saved settings</string>
     <string name="led_use_saved_settings_description">Apply saved settings after reboot</string>
+    <string name="app_has_been_crashed">App has been crashed!</string>
+    <string name="back">Back</string>
 </resources>

@@ -13,4 +13,6 @@
     <string name="cat_application">Приложение</string>
     <string name="led_use_saved_settings_title">Использовать сохранённые настройки</string>
     <string name="led_use_saved_settings_description">Применять сохранённые настройки после перезапуска</string>
+    <string name="app_has_been_crashed">App has been crashed!</string>
+    <string name="back">Back</string>
 </resources>
