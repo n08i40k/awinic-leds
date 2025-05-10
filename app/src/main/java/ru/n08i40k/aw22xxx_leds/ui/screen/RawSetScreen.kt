@@ -3,6 +3,7 @@ package ru.n08i40k.aw22xxx_leds.ui.screen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -10,7 +11,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.compose.foundation.lazy.itemsIndexed
 import ru.n08i40k.aw22xxx_leds.R
 import ru.n08i40k.aw22xxx_leds.bridge.LedFrq
 import ru.n08i40k.aw22xxx_leds.ui.model.LedsViewModel
