@@ -56,16 +56,18 @@ jobs:
           name: app-release.apk
           path: app/build/outputs/apk/release/app-release-signed.apk
 
-      - name: Pack Magisk module
+      - name: Build module
         run: |
-          cd magisk-module
-          sh pack-release.sh ../app/build/outputs/apk/release/app-release-signed.apk
+          chmod +x module/build.sh
+          module/build.sh \
+            -a app/build/outputs/apk/release/app-release-signed.apk \
+            -o module-release-${{ github.ref_name }}.zip
 
-      - name: Upload Magisk module
+      - name: Upload module
         uses: actions/upload-artifact@v4
         with:
-          name: magisk-module.zip
-          path: ./magisk-module/output/aw22xxx_leds_release.zip
+          name: module-release-${{ github.ref_name }}.zip
+          path: module-release-${{ github.ref_name }}.zip
 
       - name: Generate changelog
         run: |
@@ -76,5 +78,5 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1.16.0
         with:
-          artifacts: "magisk-module/output/aw22xxx_leds_release.zip"
+          artifacts: module-release-${{ github.ref_name }}.zip
           bodyFile: CHANGELOG.md
