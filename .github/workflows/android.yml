@@ -4,6 +4,10 @@ on:
   push:
     tags:
       - '*'
+  workflow_dispatch:
+
+env:
+  VERSION: ${{ github.event_name == 'workflow_dispatch' && github.ref_name || github.sha }}
 
 jobs:
   build:
@@ -61,22 +65,24 @@ jobs:
           chmod +x module/build.sh
           module/build.sh \
             -a app/build/outputs/apk/release/app-release-signed.apk \
-            -o module-release-${{ github.ref_name }}.zip
+            -o module-release-${{ env.VERSION }}.zip
 
       - name: Upload module
         uses: actions/upload-artifact@v4
         with:
-          name: module-release-${{ github.ref_name }}.zip
-          path: module-release-${{ github.ref_name }}.zip
+          name: module-release-${{ env.VERSION }}.zip
+          path: module-release-${{ env.VERSION }}.zip
 
       - name: Generate changelog
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
           LAST_TAG=$(git describe --tags --abbrev=0 HEAD^)
           echo "## Commits from previous release $LAST_TAG" > CHANGELOG.md
           git log $LAST_TAG..HEAD --oneline >> CHANGELOG.md
 
       - name: Create Release
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         uses: ncipollo/release-action@v1.16.0
         with:
-          artifacts: module-release-${{ github.ref_name }}.zip
+          artifacts: module-release-${{ env.VERSION }}.zip
           bodyFile: CHANGELOG.md
