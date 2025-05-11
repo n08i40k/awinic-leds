@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  VERSION: ${{ github.event_name == 'workflow_dispatch' && github.ref_name || github.sha }}
+  VERSION: ${{ github.event_name != 'workflow_dispatch' && github.ref_name || github.sha }}
 
 jobs:
   build:
